@@ -19,3 +19,5 @@
 /log/*
 !/log/.keep
 /tmp
+#ignore photos as they are going to Aws
+/public/system/*
