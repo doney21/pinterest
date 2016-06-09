@@ -31,6 +31,14 @@ Rails.application.configure do
 
   #require for heroku
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # ActionMailer Config
+  config.action_mailer.delivery_method = :sendmail
+  # change to true to allow email to be sent during development
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+  
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
@@ -42,4 +50,5 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
 end

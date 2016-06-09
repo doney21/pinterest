@@ -21,6 +21,7 @@ class PinsController < ApplicationController
     @pin = current_user.pins.build(pin_params)
     if @pin.save
       # send an email here
+      AdvertMailer.advert_email.deliver_now
       redirect_to @pin, notice: 'Your Advert was successfully created.'
     else
       render :new

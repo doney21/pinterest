@@ -64,6 +64,15 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
+  # This is an example for pruduciton but no need to bother with it now. Variable below will have to be changed.
+  # config.action_mailer.default_url_options = {
+  #   host: ENV.fetch('CAMPTRAVEL_HOST', 'www.camptravel.net'),
+  #   protocol: 'https',
+  #   locale: I18n.locale
+  # }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.asset_host = ENV['CLOUDFRONT_ASSETS_HOST']
+
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
