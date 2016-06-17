@@ -1,5 +1,5 @@
 class AdvertMailer < ApplicationMailer
-    default from: "from@example.com"
+    default from: "info@adverts.market"
     layout 'mailer'
     
     def advert_email
