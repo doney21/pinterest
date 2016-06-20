@@ -1,9 +1,9 @@
+<%= javascript_include_tag Ckeditor.cdn_url %>
 
 <%= form_for @pin, html: { multipart: true } do |f| %>
   <% if @pin.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@pin.errors.count, "error") %> prohibited this pin from being saved:</h2>
-
       <ul>
       <% @pin.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -18,16 +18,17 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :title ,value: "Title" %>
-    <%= f.text_field :description, class: "form-control"%>
-
+    <%= f.label :title, value: "Title" %>
+    <%= f.text_field :title, class: "form-control"%>
   </div>
-    <div class="form-group">
+
+  <div class="form-group">
     <%= f.label :description, value: "Advert text/copy" %> 
-
-    <textarea class="form-control" rows="3"></textarea>
+    <%= f.cktext_area :description, :value => @description, :id => 'sometext' %>
   </div>
-  
+
+  (Click on "Create Ad" button is going to send an email to user(s))
+  <br></br>
   <div class="form-group">
     <%= f.submit class: "btn btn-primary", value: "Create Ad" %>
   </div>
