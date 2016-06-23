@@ -1,6 +1,7 @@
 
 <%= render 'pages/home' unless user_signed_in? %>
 <div id="pins" class="transitions-enabled">
+  <% if user_signed_in? %>
   <% @pins.each do |pin| %>
     <div class="box panel panel-default">
       <%= link_to image_tag(pin.image.url(:medium)), pin %>
@@ -21,6 +22,7 @@
         <% end %>
       </div>
     </div>
+  <% end %>
   <% end %>
 </div>
 
