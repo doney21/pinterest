@@ -90,13 +90,27 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   config.paperclip_defaults = {
-  :storage => :s3,
-  :s3_credentials => {
-    :bucket => ENV['S3_BUCKET_NAME'],
-    :access_key_sid => ENV['AWS_ACCESS_KEY_ID'],
-    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :access_key_sid => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
   }
-}
 
-  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.default_url_options = { :host => 'https://adverts-market.herokuapp.com' }
+
+  config.action_mailer.smtp_settings = {
+    :user_name => ENV["SENDGRID_USERNAME"],
+    :password => ENV["SENDGRID_PASSWORD"],
+    :address => 'smtp.sendgrid.net',
+    :domain => 'myapp.herokuapp.com',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  } 
 end

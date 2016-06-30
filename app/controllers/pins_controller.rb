@@ -15,13 +15,15 @@ class PinsController < ApplicationController
   end
 
   def edit
+    pin = Pin.find params[:id]
+    @description = pin.description
   end
 
   def create
     @pin = current_user.pins.build(pin_params)
     if @pin.save
-      # send an email here
-#      AdvertMailer.advert_email.deliver_now
+      # Sending email
+      # AdvertMailer.advert_email.deliver_now
       redirect_to @pin, notice: 'Your Advert was successfully created.'
     else
       render :new
@@ -54,6 +56,6 @@ class PinsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pin_params
-      params.require(:pin).permit(:description, :image)
+      params.require(:pin).permit(:title, :description, :image)
     end
 end
